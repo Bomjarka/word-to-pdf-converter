@@ -1,0 +1,21 @@
+{
+    "name": "bomjarka/word-to-pdf-converter",
+    "description": "Package for converting docx to pdf",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chirkin Alexander",
+            "email": "sashaxamas@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Bomjarka\\WordToPdfConverter\\": "src/"
+        }
+    },
+    "require": {
+        "phpoffice/phpword": "^1.1",
+        "barryvdh/laravel-dompdf": "^2.0"
+    }
+}
