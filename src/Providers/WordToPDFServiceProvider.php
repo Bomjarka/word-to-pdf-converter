@@ -13,7 +13,8 @@ class WordToPDFServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/filesystems.php', 'disks');
+        $filesystemsConfig = include(__DIR__ . '/../../config/filesystems.php');
+        config(['filesystems.disks.documents' => $filesystemsConfig['disks']['documents']]);
 
         $this->app->bind(ConverterInterface::class, PDFConverter::class);
         $this->app->bind(RepositoryInterface::class, FileSystemRepository::class);
