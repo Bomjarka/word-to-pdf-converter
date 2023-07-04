@@ -27,13 +27,14 @@
         "illuminate/container": "^9.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest"
+        ,
         "phpunit/phpunit": "^9.0"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Bomjarka\\WordToPdfConverter\\Providers\\WordToPDFServiceProvider.php",
-                "Yuraplohov\\LaravelExample\\Providers\\EloquentFilterServiceProvider"
+                "Bomjarka\\WordToPdfConverter\\Providers\\WordToPDFServiceProvider.php"
             ]
         }
     },
