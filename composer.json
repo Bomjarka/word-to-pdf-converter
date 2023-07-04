@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Bomjarka\\WordToPdfConverter\\Providers\\WordToPDFServiceProvider.php"
+                "Bomjarka\\WordToPdfConverter\\Providers\\WordToPDFServiceProvider"
             ]
         }
     },
