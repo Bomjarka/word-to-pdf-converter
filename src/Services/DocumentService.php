@@ -16,8 +16,14 @@ class DocumentService
     public function __construct(
         private ConverterInterface  $converter,
         private RepositoryInterface $fileRepository,
+        private $storagePath,
     )
     {
+    }
+
+    private function constructStorageFilePath($documentName)
+    {
+        return $this->storagePath . '/' . $documentName;
     }
 
     /**
@@ -26,7 +32,7 @@ class DocumentService
      */
     public function saveDocument(UploadedFile $document): void
     {
-        $this->fileRepository->saveFile($document);
+        $this->fileRepository->saveFile($document, $this->storagePath);
     }
 
     /**
@@ -35,7 +41,7 @@ class DocumentService
      */
     public function fileExists(string $documentName): bool
     {
-        return $this->fileRepository->fileExists($documentName);
+        return $this->fileRepository->fileExists($this->constructStorageFilePath($documentName));
     }
 
     /**
@@ -44,7 +50,7 @@ class DocumentService
      */
     private function getFilePath(string $documentName): string
     {
-        return $this->fileRepository->getFilePath($documentName);
+        return $this->fileRepository->getFilePath($this->constructStorageFilePath($documentName));
     }
 
 
@@ -67,7 +73,7 @@ class DocumentService
     public function convert(string $documentName)
     {
         $convertedFile = $this->converter->convert($this->getFilePath($documentName));
-        $this->deleteFile($documentName);
+        $this->deleteFile($this->constructStorageFilePath($documentName));
 
         return $convertedFile;
     }

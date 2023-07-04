@@ -21,12 +21,15 @@ class PDFConverter implements ConverterInterface
         $savePath = mb_strstr($documentPath, '.', true) . self::FILE_EXTENSION;
         /* Set the PDF Engine Renderer Path */
         $domPdfPath = base_path('vendor/dompdf/dompdf');
+
         Settings::setPdfRendererPath($domPdfPath);
-        Settings::setPdfRendererName('DomPDF');
+        Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
         //Load word file
         $content = IOFactory::load($documentPath);
+
         //Save it into PDF
         $PDFWriter = IOFactory::createWriter($content, 'PDF');
+
         $this->save($PDFWriter, $savePath);
 
         return $savePath;

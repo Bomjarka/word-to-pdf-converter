@@ -14,7 +14,7 @@ class FileSystemRepository implements RepositoryInterface
      */
     public function fileExists($fileName): bool
     {
-        return Storage::disk('documents')->exists('/' . $fileName);
+        return Storage::exists($fileName);
     }
 
     /**
@@ -24,7 +24,7 @@ class FileSystemRepository implements RepositoryInterface
     public function getFilePath($fileName): ?string
     {
         if ($this->fileExists($fileName)) {
-            return Storage::disk('documents')->path('/' . $fileName);
+            return Storage::path($fileName);
         }
 
         return null;
@@ -34,10 +34,10 @@ class FileSystemRepository implements RepositoryInterface
      * @param $fileName
      * @return void
      */
-    public function saveFile($fileName): void
+    public function saveFile($fileName, $storagePath): void
     {
         /** @var UploadedFile $fileName */
-        $fileName->storeAs('', $fileName->getClientOriginalName(), 'documents');
+        $fileName->storeAs($storagePath, $fileName->getClientOriginalName());
     }
 
     /**
@@ -47,7 +47,7 @@ class FileSystemRepository implements RepositoryInterface
     public function deleteFile($fileName): void
     {
         if ($this->fileExists($fileName)) {
-            Storage::disk('documents')->delete('/' . $fileName);
+            Storage::delete($fileName);
         }
     }
 }
