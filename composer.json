@@ -24,11 +24,10 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "illuminate/http": "^9.0",
         "illuminate/support": "^9.0",
-        "illuminate/container": "^9.0"
+        "illuminate/container": "^9.0",
+        "illuminate/filesystem": "^9.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest"
-        ,
         "phpunit/phpunit": "^9.0"
     },
     "extra": {

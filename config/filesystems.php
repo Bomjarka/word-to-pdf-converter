@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'disks' => [
         'documents' => [
             'path' => 'public/documents',
