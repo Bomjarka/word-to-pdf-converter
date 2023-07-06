@@ -21,14 +21,10 @@
     },
     "require": {
         "phpoffice/phpword": "^1.1",
-        "barryvdh/laravel-dompdf": "^2.0",
-        "illuminate/http": "^9.0",
-        "illuminate/support": "^9.0",
-        "illuminate/container": "^9.0"
+        "barryvdh/laravel-dompdf": "^2.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest"
-        ,
+        "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "^9.0"
     },
     "extra": {

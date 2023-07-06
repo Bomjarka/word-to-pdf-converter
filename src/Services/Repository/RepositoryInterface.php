@@ -4,11 +4,9 @@ namespace Bomjarka\WordToPdfConverter\Services\Repository;
 
 interface RepositoryInterface
 {
-    public function getFilePath($fileName);
+    public function getFilePath(string $fileName);
 
-    public function saveFile($fileName, $storagePath);
+    public function fileExists(string $fileName);
 
-    public function fileExists($fileName);
-
-    public function deleteFile($fileName);
+    public function deleteFile(string $fileName);
 }

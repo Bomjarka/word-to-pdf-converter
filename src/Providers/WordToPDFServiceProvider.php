@@ -25,6 +25,5 @@ class WordToPDFServiceProvider extends ServiceProvider
                 config('filesystems.disks.documents.path')
             );
         });
-
     }
 }

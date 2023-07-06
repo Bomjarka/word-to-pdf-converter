@@ -5,7 +5,6 @@ namespace Bomjarka\WordToPdfConverter\Services;
 
 use Bomjarka\WordToPdfConverter\Services\Converter\ConverterInterface;
 use Bomjarka\WordToPdfConverter\Services\Repository\RepositoryInterface;
-use Illuminate\Http\UploadedFile;
 use PhpOffice\PhpWord\Exception\CopyFileException;
 use PhpOffice\PhpWord\Exception\CreateTemporaryFileException;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -21,18 +20,13 @@ class DocumentService
     {
     }
 
-    private function constructStorageFilePath($documentName)
+    /**
+     * @param $documentName
+     * @return string
+     */
+    private function constructStorageFilePath($documentName): string
     {
         return $this->storagePath . '/' . $documentName;
-    }
-
-    /**
-     * @param UploadedFile $document
-     * @return void
-     */
-    public function saveDocument(UploadedFile $document): void
-    {
-        $this->fileRepository->saveFile($document, $this->storagePath);
     }
 
     /**

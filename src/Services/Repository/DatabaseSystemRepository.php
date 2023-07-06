@@ -10,11 +10,6 @@ class DatabaseSystemRepository implements RepositoryInterface
         // TODO: Implement getFilePath() method.
     }
 
-    public function saveFile($fileName)
-    {
-        // TODO: Implement saveFile() method.
-    }
-
     public function fileExists($fileName)
     {
         // TODO: Implement fileExists() method.

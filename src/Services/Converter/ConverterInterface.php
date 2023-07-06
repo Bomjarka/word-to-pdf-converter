@@ -4,5 +4,5 @@ namespace Bomjarka\WordToPdfConverter\Services\Converter;
 
 interface ConverterInterface
 {
-    public function convert($documentPath);
+    public function convert(string $documentPath);
 }

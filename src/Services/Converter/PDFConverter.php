@@ -12,15 +12,19 @@ class PDFConverter implements ConverterInterface
     private const FILE_EXTENSION = '.pdf';
 
     /**
-     * @param $documentPath
+     * @param string $documentPath
      * @return string
      * @throws Exception
      */
-    public function convert($documentPath): string
+    public function convert(string $documentPath): string
     {
         $savePath = mb_strstr($documentPath, '.', true) . self::FILE_EXTENSION;
         /* Set the PDF Engine Renderer Path */
-        $domPdfPath = base_path('vendor/dompdf/dompdf');
+        if (file_exists('/var/www/vendor/dompdf/dompdf')) {
+            $domPdfPath = '/var/www/vendor/dompdf/dompdf';
+        } else {
+            $domPdfPath = __DIR__ . '/../../../vendor/dompdf/dompdf';
+        }
 
         Settings::setPdfRendererPath($domPdfPath);
         Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);

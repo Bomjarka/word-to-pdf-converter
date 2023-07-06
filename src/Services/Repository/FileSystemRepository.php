@@ -2,52 +2,38 @@
 
 namespace Bomjarka\WordToPdfConverter\Services\Repository;
 
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-
 class FileSystemRepository implements RepositoryInterface
 {
-
     /**
-     * @param $fileName
+     * @param string $fileName
      * @return bool
      */
-    public function fileExists($fileName): bool
+    public function fileExists(string $fileName): bool
     {
-        return Storage::exists($fileName);
+        return file_exists($fileName);
     }
 
     /**
-     * @param $fileName
+     * @param string $fileName
      * @return string|null
      */
-    public function getFilePath($fileName): ?string
+    public function getFilePath(string $fileName): ?string
     {
         if ($this->fileExists($fileName)) {
-            return Storage::path($fileName);
+            return $fileName;
         }
 
         return null;
     }
 
     /**
-     * @param $fileName
+     * @param string $fileName
      * @return void
      */
-    public function saveFile($fileName, $storagePath): void
-    {
-        /** @var UploadedFile $fileName */
-        $fileName->storeAs($storagePath, $fileName->getClientOriginalName());
-    }
-
-    /**
-     * @param $fileName
-     * @return void
-     */
-    public function deleteFile($fileName): void
+    public function deleteFile(string $fileName): void
     {
         if ($this->fileExists($fileName)) {
-            Storage::delete($fileName);
+            unlink($fileName);
         }
     }
 }
